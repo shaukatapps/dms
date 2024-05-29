@@ -14,8 +14,10 @@ public class OrganizationController {
 	@Autowired
 	public OrganizationService organizationService;
 	
-	@PostMapping("/saveOrganization")
+	@PostMapping("saveOrganization")
 	public void saveOrganization(@RequestBody Organization organization) {
+		System.out.println("save org  "+organization.getName());
+		
 		organizationService.saveOrganization(organization);
 	}
 

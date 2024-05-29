@@ -1,6 +1,6 @@
 package com.dms.serviceimpl;
 
-import java.io.Serializable;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,10 @@ public class OrganizationServiceImpl implements OrganizationService {
 	@Autowired
 	public OrganizationDao organizationDao;
 	
-	public Serializable saveOrganization(Organization organization) {
+	public void saveOrganization(Organization organization) {
 		// TODO Auto-generated method stub
-		return (Serializable) organizationDao.save(organization);
+		organization.setCreatedOn(new Date());
+		organizationDao.save(organization);
 	}
 
 	
