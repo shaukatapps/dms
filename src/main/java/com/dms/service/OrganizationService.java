@@ -6,5 +6,5 @@ import com.dms.model.Organization;
 
 public interface OrganizationService {
 
-	public void saveOrganization(Organization organization);
+	public Organization saveOrganization(Organization organization);
 }

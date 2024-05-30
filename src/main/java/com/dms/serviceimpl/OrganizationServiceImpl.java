@@ -15,10 +15,9 @@ public class OrganizationServiceImpl implements OrganizationService {
 	@Autowired
 	public OrganizationDao organizationDao;
 	
-	public void saveOrganization(Organization organization) {
-		// TODO Auto-generated method stub
+	public Organization saveOrganization(Organization organization) {
 		organization.setCreatedOn(new Date());
-		organizationDao.save(organization);
+		return organizationDao.save(organization);
 	}
 
 	

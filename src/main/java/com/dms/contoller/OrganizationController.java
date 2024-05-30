@@ -1,5 +1,7 @@
 package com.dms.contoller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,13 +14,15 @@ import com.dms.service.OrganizationService;
 public class OrganizationController {
 	
 	@Autowired
-	public OrganizationService organizationService;
+	private OrganizationService organizationService;
+	
+	private Logger logger = LoggerFactory.getLogger(OrganizationController.class);
 	
 	@PostMapping("saveOrganization")
-	public void saveOrganization(@RequestBody Organization organization) {
-		System.out.println("save org  "+organization.getName());
-		
-		organizationService.saveOrganization(organization);
+	public Organization saveOrganization(@RequestBody Organization orgRequest) {
+		logger.info(" save organization ");
+		Organization organization = organizationService.saveOrganization(orgRequest);
+		return organization;
 	}
 
 }
