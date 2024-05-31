@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dms.model.Organization;
 import com.dms.service.OrganizationService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class OrganizationController {
 	
@@ -19,10 +21,9 @@ public class OrganizationController {
 	private Logger logger = LoggerFactory.getLogger(OrganizationController.class);
 	
 	@PostMapping("saveOrganization")
-	public Organization saveOrganization(@RequestBody Organization orgRequest) {
+	public Organization saveOrganization(@Valid @RequestBody Organization orgRequest) {
 		logger.info(" save organization ");
 		Organization organization = organizationService.saveOrganization(orgRequest);
 		return organization;
 	}
-
 }

@@ -1,13 +1,12 @@
 package com.dms.serviceimpl;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dms.dao.OrganizationDao;
 import com.dms.model.Organization;
 import com.dms.service.OrganizationService;
+import com.dms.utils.DateTimeGenerator;
 
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
@@ -16,9 +15,8 @@ public class OrganizationServiceImpl implements OrganizationService {
 	public OrganizationDao organizationDao;
 	
 	public Organization saveOrganization(Organization organization) {
-		organization.setCreatedOn(new Date());
+		organization.setCreatedOn(DateTimeGenerator.getCurrentDate());
 		return organizationDao.save(organization);
 	}
 
-	
 }

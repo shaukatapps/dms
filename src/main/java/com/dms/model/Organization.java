@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Organization {
@@ -13,11 +15,14 @@ public class Organization {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
-	private Date createdOn;
-	private String createdBy;
 	private boolean active;
-
+	private Date createdOn;
+	@NotBlank(message = "Created by cannot be empty.")
+	private String createdBy;
+	@NotBlank(message = "Hospital name cannot be empty.")
+	@Pattern(regexp = "^[A-Za-z]+$", message = "Hospital name must contain only alphabetic characters")
+	private String name;
+	
 	public int getId() {
 		return id;
 	}
