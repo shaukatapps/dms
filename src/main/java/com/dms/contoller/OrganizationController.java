@@ -15,10 +15,10 @@ import jakarta.validation.Valid;
 @RestController
 public class OrganizationController {
 	
+	private Logger logger = LoggerFactory.getLogger(OrganizationController.class);
+	
 	@Autowired
 	private OrganizationService organizationService;
-	
-	private Logger logger = LoggerFactory.getLogger(OrganizationController.class);
 	
 	@PostMapping("saveOrganization")
 	public Organization saveOrganization(@Valid @RequestBody Organization orgRequest) {

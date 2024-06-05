@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 @Entity
-public class Organization {
+public class Location {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +19,8 @@ public class Organization {
 	private Date createdOn;
 	@NotBlank(message = "Created by cannot be empty.")
 	private String createdBy;
-	@NotBlank(message = "Hospital name cannot be empty.")
-	@Pattern(regexp = "^[A-Za-z]+$", message = "Hospital name must contain only alphabetic characters")
+	@NotBlank(message = "Location name cannot be empty.")
+	@Pattern(regexp = "^[A-Za-z]+$", message = "Location name must contain only alphabetic characters")
 	private String name;
 
 	public int getId() {
@@ -31,12 +31,12 @@ public class Organization {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public Date getCreatedOn() {
@@ -55,12 +55,12 @@ public class Organization {
 		this.createdBy = createdBy;
 	}
 
-	public boolean isActive() {
-		return active;
+	public String getName() {
+		return name;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
